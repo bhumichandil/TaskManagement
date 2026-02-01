@@ -18,7 +18,10 @@ import com.task.Repository.IssueCommentRepository;
 import com.task.Repository.IssueRepository;
 import com.task.Repository.SprintRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class IssueService {
 
     @Autowired
@@ -38,15 +41,17 @@ public class IssueService {
     public IssueDTO createIssue(IssueDTO dto) {
 
         Issue issue = new Issue();
-
-        issue.setIssueTitle(dto.getIssueTitle());
-        issue.setIssueDescription(dto.getIssueDescription());
-        issue.setIssueType(dto.getIssueType());
-        issue.setPriority(dto.getPriority());
-        issue.setIssueStatus(dto.getIssueStatus());
-        issue.setAssignedEmail(dto.getAssignedEmail());
-        issue.setReporterEmail(dto.getReporterEmail());
-        issue.setDueDate(dto.getDueDate());
+        issue.setIssueKey(generateIssueKey(issue.getId()));
+        issue.setIssueTitle(dto.issueTitle);
+        issue.setIssueDescription(dto.issueDescription);
+        issue.setIssueType(dto.issueType);
+        issue.setPriority(dto.priority);
+        issue.setIssueStatus(dto.issueStatus);
+        issue.setAssignedEmail(dto.assignedEmail);
+        issue.setReporterEmail(dto.reporterEmail);
+        issue.setDueDate(dto.dueDate);
+        
+       
 
         // Save first to get ID
         issue = issueRepo.save(issue);
