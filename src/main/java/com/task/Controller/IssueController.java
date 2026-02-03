@@ -43,7 +43,7 @@ public class IssueController {
     }
 
     @PostMapping("/{id}/comment")
-    public ResponseEntity<IssueComment> addComment(
+    public ResponseEntity< IssueComment> addComment(
             @PathVariable Long id,
             @RequestBody Map<String, String> payload) {
 

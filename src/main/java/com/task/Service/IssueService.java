@@ -31,7 +31,7 @@ public class IssueService {
     private IssueCommentRepository issueCommentRepo;
 
     @Autowired
-    private SprintRepository sprintRepo;
+    private  SprintRepository sprintRepo;
 
     private String generateIssueKey(Long id) {
         return "PROJECT_" + id;
